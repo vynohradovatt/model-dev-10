@@ -19,9 +19,9 @@ public class ClientCrudService {
         TRANSACTION.commit();
     }
 
-    public void getClient(long id) {
+    public Client getClient(long id) {
         Client client = SESSION.get(Client.class, id);
-        System.out.println("client = " + client);
+        return client;
     }
 
     public void getAllClient() {

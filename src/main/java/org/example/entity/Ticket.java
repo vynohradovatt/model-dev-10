@@ -1,13 +1,11 @@
 package org.example.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name="ticket")
-@Data
+
 public class Ticket {
 
     @Id
@@ -17,13 +15,42 @@ public class Ticket {
     @Column(name="created_at")
     private Timestamp created_at;
 
-    @Column(name="client_id")
-    private long client_id;
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable=false)
+    private Client client;
 
-    @Column(name="from_planet_id")
-    private long from_planet_id;
+    @ManyToOne
+    @JoinColumn(name="from_planet_id", nullable=false)
+    private Planet from_planet;
 
-    @Column(name="to_planet_id")
-    private long to_planet_id;
+    @ManyToOne
+    @JoinColumn(name="to_planet_id", nullable=false)
+    private Planet to_planet;
 
+    public void setCreated_at(Timestamp created_at) {
+        this.created_at = created_at;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void setFrom_planet(Planet from_planet) {
+        this.from_planet = from_planet;
+    }
+
+    public void setTo_planet(Planet to_planet) {
+        this.to_planet = to_planet;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", created_at=" + created_at +
+                ", client=" + client +
+                ", from_planet=" + from_planet +
+                ", to_planet=" + to_planet +
+                '}';
+    }
 }

@@ -19,9 +19,9 @@ public class PlanetCrudService {
         TRANSACTION.commit();
     }
 
-    public void getPlanet(String  id){
+    public Planet getPlanet(String  id){
         Planet planet = SESSION.get(Planet.class,id);
-        System.out.println("planet = " + planet);
+        return planet;
     }
 
     public void getAllPlanet(){

@@ -1,12 +1,10 @@
 package org.example.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name="client")
-@Data
+
 public class Client {
 
     @Id
@@ -16,4 +14,15 @@ public class Client {
     @Column(name = "name")
     private String name;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
